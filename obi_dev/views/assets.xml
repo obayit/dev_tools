@@ -4,6 +4,7 @@
     <template id="assets_backend" name="obi_dev assets" inherit_id="web.assets_backend">
         <xpath expr="." position="inside">
             <script type="text/javascript" src="/obi_dev/static/src/js/upgrade_tray_icon.js" />
+            <script type="text/javascript" src="/obi_dev/static/src/js/log_tray_icon.js" />
             <link rel="stylesheet" type="text/scss" href="/obi_dev/static/src/css/upgrade_tray.css" />
         </xpath>
     </template>

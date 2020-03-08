@@ -40,6 +40,7 @@ var UpgradeSystrayWidget = Widget.extend({
             model: 'ir.module.module',
             method: 'button_immediate_upgrade',
             args: [[moduleId]],
+            context: {obi_upgrade: 'true story'},
         });
     },
 });

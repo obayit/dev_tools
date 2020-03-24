@@ -2,20 +2,22 @@
 
 <templates>
   <t t-name="obi_dev.systray.UpgradeMenuItems">
-    <div>
-        <span>Todo: upgrade by directory</span>
-        <span>Todo: upgrade all/all custom</span>
+    <div class="obi_upgrade_dropdown">
+        <t t-if="_.isEmpty(modules)">
+            <div class="dropdown-item-text text-center">
+                <span>No custom modules.</span>
+            </div>
+        </t>
+        <t t-foreach="modules" t-as="module">
+            <div class="o_obi_dev_module" t-att-data-module_id="module.id">
+                <a t-esc="module.name"/>
+            </div>
+        </t>
+        <!-- <div>
+            <span>Todo: upgrade by directory</span>
+            <span>Todo: upgrade all/all custom</span>
+        </div> -->
     </div>
-    <t t-if="_.isEmpty(modules)">
-        <div class="dropdown-item-text text-center">
-            <span>No custom modules.</span>
-        </div>
-    </t>
-    <t t-foreach="modules" t-as="module">
-        <div class="o_obi_dev_module" t-att-data-module_id="module.id">
-            <a t-esc="module.name"/>
-        </div>
-    </t>
   </t>
 
   <t t-name="obi_dev.systray.UpgradeMenu">

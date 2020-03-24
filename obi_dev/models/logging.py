@@ -27,11 +27,3 @@ import odoo
 #    print(sys.stdout.read())
 #
 #print('FINISHED READING STDOUT')
-
-class PurchaseOrder(models.Model):
-    _inherit = "purchase.order"
-
-    @api.multi
-    def do_nothing(self):
-        return
-

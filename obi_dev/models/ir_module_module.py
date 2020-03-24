@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from operator import attrgetter
 from os import listdir
 from os.path import isfile, join, isdir
 
@@ -21,13 +22,39 @@ class Module(models.Model):
                 continue
             non_basic_addons.extend(onlydirs)
         res = []
-        modules = self.search([['state', 'in', ['installed', 'to upgrade', 'to remove']],
+        x = self.search([['state', 'in', ['installed', 'to upgrade', 'to remove']],
         ['name', 'in', non_basic_addons]], order='obi_upgrades')
+        modules = sorted(x, key=attrgetter('obi_upgrades'), reverse=True)
+
+
         for module in modules:
             res.append({
                 'id': module.id,
-                'name': module.name,
+                'name': '{0} ({1})'.format(module.name, module.obi_upgrades),
             })
+        return res
+
+    @api.model
+    def get_reports(self):
+        non_basic_addons = []
+        for addons_path in odoo.modules.module.ad_paths:
+            onlydirs = [d for d in listdir(addons_path) if isdir(join(addons_path, d))]
+            if 'web' in onlydirs and '__manifest__.py' in listdir(join(addons_path, 'web')):
+                continue
+            non_basic_addons.extend(onlydirs)
+        res = []
+        x = self.search([['state', 'in', ['installed', 'to upgrade', 'to remove']],
+        ['name', 'in', non_basic_addons]], order='obi_upgrades')
+        modules = sorted(x, key=attrgetter('obi_upgrades'), reverse=True)
+
+
+        for module in modules:
+            reports = self.env['ir.actions.report'].search([('report_name', 'ilike', '{0}%'.format(module.name))])
+            for report in reports:
+                res.append({
+                    'id': module.id,
+                    'name': 'http://localhost:8069/report/pdf/{0}/1'.format(report.report_name),
+                })
         return res
 
     @api.multi

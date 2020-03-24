@@ -1,3 +1,10 @@
 .o_obi_dev_module{
+    color: black;
+    cursor: pointer;
+}
+.o_obi_dev_module:hover {
     color: red;
+}
+.obi_upgrade_dropdown{
+    width: 200px;
 }

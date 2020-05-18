@@ -18,11 +18,12 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'bus'],
 
     # always loaded
     'data': [
         'views/assets.xml',
+        'views/views_ir_model.xml',
     ],
 
     'qweb': [

@@ -135,3 +135,5 @@ dmypy.json
 .pytype/
 obi_dev/models/__pycache__/__init__.cpython-36.pyc
 obi_dev/models/__pycache__/ir_module_module.cpython-36.pyc
+
+.vscode

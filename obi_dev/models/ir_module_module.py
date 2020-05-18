@@ -57,7 +57,6 @@ class Module(models.Model):
                 })
         return res
 
-    @api.multi
     def _button_immediate_function(self, function):
         if self.env.context.get('obi_upgrade', False):
             self.obi_upgrades += 1

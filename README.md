@@ -1,7 +1,8 @@
 # obi_dev
 Development Helper for Odoo
-Milestones: 
+===========================
+Features 
+--------
 
-* show the log on the web :D maybe with a creative interface
-* show actions on model info form.
-
+* Easly upgrade modules from the tray icon
+* show action/views on res.model form

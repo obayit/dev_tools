@@ -1,4 +1,4 @@
-odoo.define('obi_dev.systray.UpgradeMenu', function (require) {
+odoo.define('dev_tools.systray.UpgradeMenu', function (require) {
 
 "use strict";
 var core = require('web.core');
@@ -9,13 +9,13 @@ var session = require('web.session');
 
 var UpgradeSystrayWidget = Widget.extend({
     name: 'upgrade_menu',
-    template:'obi_dev.systray.UpgradeMenu',
+    template:'dev_tools.systray.UpgradeMenu',
     events: {
         'show.bs.dropdown': '_onUpgradeMenuShow',
-        'click .o_obi_dev_module': '_onModuleClicked',
+        'click .o_dev_tools_module': '_onModuleClicked',
     },
     start: function () {
-        this._$upgradeMenuIcon = this.$('.o_obi_dev_upgrade_items');
+        this._$upgradeMenuIcon = this.$('.o_dev_tools_upgrade_items');
         var self = this;
         if(session.user_has_group('base.group_no_one')){
             this.upgradeData = this._rpc({
@@ -29,7 +29,7 @@ var UpgradeSystrayWidget = Widget.extend({
     _onUpgradeMenuShow: function(){
         var self = this;
         this.upgradeData.then(function (){
-            self._$upgradeMenuIcon.html(QWeb.render('obi_dev.systray.UpgradeMenuItems', {
+            self._$upgradeMenuIcon.html(QWeb.render('dev_tools.systray.UpgradeMenuItems', {
                 modules : self.modules
             }));
         });

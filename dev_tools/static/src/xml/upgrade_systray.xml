@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <templates>
-  <t t-name="obi_dev.systray.UpgradeMenuItems">
+  <t t-name="dev_tools.systray.UpgradeMenuItems">
     <div class="obi_upgrade_dropdown">
         <t t-if="_.isEmpty(modules)">
             <div class="dropdown-item-text text-center">
@@ -9,7 +9,7 @@
             </div>
         </t>
         <t t-foreach="modules" t-as="module">
-            <div class="o_obi_dev_module" t-att-data-module_id="module.id">
+            <div class="o_dev_tools_module" t-att-data-module_id="module.id">
                 <a t-esc="module.name"/>
             </div>
         </t>
@@ -20,32 +20,32 @@
     </div>
   </t>
 
-  <t t-name="obi_dev.systray.UpgradeMenu">
+  <t t-name="dev_tools.systray.UpgradeMenu">
       <li class="o_obi_upgrade_systray">
           <a class="dropdown-toggle o-no-caret" data-toggle="dropdown" data-display="static" aria-expanded="false" title="Upgrade" href="#" role="button">
               <i class="fa fa-arrow-circle-up" role="img" aria-label="Upgrade"/>
           </a>
           <div class="dropdown-menu dropdown-menu-right" role="menu">
-              <div class="o_obi_dev_upgrade_items"/>
+              <div class="o_dev_tools_upgrade_items"/>
           </div>
       </li>
   </t>
 
     <!--Log Systray-->
-  <t t-name="obi_dev.systray.LogMenuItems">
+  <t t-name="dev_tools.systray.LogMenuItems">
     <t t-if="_.isEmpty(modules)">
         <div class="dropdown-item-text text-center">
             <span>No custom modules.</span>
         </div>
     </t>
     <t t-foreach="modules" t-as="module">
-        <div class="o_obi_dev_module" t-att-data-module_id="module.id">
+        <div class="o_dev_tools_module" t-att-data-module_id="module.id">
             <a t-esc="module.name"/>
         </div>
     </t>
   </t>
 
-  <t t-name="obi_dev.systray.LogMenu">
+  <t t-name="dev_tools.systray.LogMenu">
       <li>
           <a class="dropdown-toggle o-no-caret o_obi_log_systray" data-toggle="dropdown" data-display="static" aria-expanded="false" title="Log" href="#" role="button">
               <i class="fa fa-info" role="img" aria-label="Log"/>

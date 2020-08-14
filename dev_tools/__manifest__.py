@@ -7,6 +7,8 @@
     Works in Community and Enterprise""",
 
     'description': """
+    Development Helper, upgrade custom modules easily.
+    Works in Community and Enterprise
     """,
 
     'author': "Ubay Abdelgadir",
@@ -17,6 +19,8 @@
     # for the full list
     'category': 'Tools',
     'version': '2.2',
+    'license': 'LGPL-3',
+    'support': 'obayit@gmail.com',
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'bus'],

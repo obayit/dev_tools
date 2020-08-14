@@ -1,4 +1,4 @@
-odoo.define('obi_dev.systray.LogMenu', function (require) {
+odoo.define('dev_tools.systray.LogMenu', function (require) {
 
 "use strict";
 var core = require('web.core');
@@ -11,7 +11,7 @@ var session = require('web.session');
 
 var LogSystrayWidget = Widget.extend({
     name: 'log_menu',
-    template:'obi_dev.systray.LogMenu',
+    template:'dev_tools.systray.LogMenu',
     dataLoad: 'Init data load',
     logLines: [],
     events: {

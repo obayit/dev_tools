@@ -17,14 +17,18 @@ var UpgradeSystrayWidget = Widget.extend({
     start: function () {
         this._$upgradeMenuIcon = this.$('.o_obi_dev_upgrade_items');
         var self = this;
-        if(session.user_has_group('base.group_no_one')){
-            this.upgradeData = this._rpc({
+        session.user_has_group('base.group_system').then(function(has_system_group){
+            if(!has_system_group){
+                self.$el.find('.o_obi_upgrade_systray').hide();
+                return;
+            }
+            self.upgradeData = self._rpc({
                 model: 'ir.module.module',
                 method: 'get_non_basic',
             }).then(function(modules) {
                 self.modules = modules;
             });
-        }
+        });
     },
     _onUpgradeMenuShow: function(){
         var self = this;

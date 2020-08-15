@@ -39,5 +39,4 @@
         'static/description/screenshot_2.png',
         'static/description/screenshot_3.png'
     ]
-    'application': False,
 }

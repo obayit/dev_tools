@@ -34,5 +34,10 @@
     'qweb': [
         "static/src/xml/*.xml",
     ],
-    'application': True,
+    'images': [
+        'static/description/screenshot_1.png',
+        'static/description/screenshot_2.png',
+        'static/description/screenshot_3.png'
+    ]
+    'application': False,
 }

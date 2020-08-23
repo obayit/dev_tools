@@ -1,4 +1,4 @@
-# obi_dev
+# dev_tools
 Development Helper for Odoo
 ===========================
 Features 

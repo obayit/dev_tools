@@ -10,6 +10,7 @@
             <page name="actions" string="Actions">
                 <separator string="Window Actions"/>
                 <field name="action_ids"/>
+                <separator string="Menu Items"/>
                 <field name="menu_ids"/>
             </page>
         </notebook>

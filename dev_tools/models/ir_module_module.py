@@ -62,4 +62,5 @@ class Module(models.Model):
     def _button_immediate_function(self, function):
         if self.env.context.get('obi_upgrade', False):
             self.obi_upgrades += 1
-        return super(Module, self)._button_immediate_function(function)
+        super(Module, self)._button_immediate_function(function)
+        return  # do not reload page after upgrade, it is annoying

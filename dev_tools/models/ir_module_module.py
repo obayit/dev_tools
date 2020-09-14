@@ -20,6 +20,8 @@ class Module(models.Model):
             onlydirs = [d for d in listdir(addons_path) if isdir(join(addons_path, d))]
             if 'web' in onlydirs and '__manifest__.py' in listdir(join(addons_path, 'web')):
                 continue
+            if 'account_accountant' in onlydirs and '__manifest__.py' in listdir(join(addons_path, 'account_accountant')):
+                continue
             non_basic_addons.extend(onlydirs)
         res = []
         x = self.search([['state', 'in', ['installed', 'to upgrade', 'to remove']],

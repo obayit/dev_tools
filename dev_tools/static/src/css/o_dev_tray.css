@@ -1,8 +1,8 @@
-.o_dev_tools_module{
+.o_dev_tools_module_event{
     color: black;
     cursor: pointer;
 }
-.o_dev_tools_module:hover {
+.o_dev_tools_module_event:hover {
     color: red;
 }
 .obi_upgrade_dropdown{

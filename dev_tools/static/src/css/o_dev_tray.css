@@ -12,6 +12,14 @@
 .o_odev_log{
     width: 1024px;
 }
+
+/*.upgrade-btn {
+    color: #00A09D;
+}
+
+.install-btn {
+    color: rgb(64, 64, 216);
+}
 /* .o_odev_log_dropdown{
     width: 95%;
 } */

@@ -22,6 +22,13 @@ class Module(models.Model):
                 continue
             if 'account_accountant' in onlydirs and '__manifest__.py' in listdir(join(addons_path, 'account_accountant')):
                 continue
+            if 'test_uninstall' in onlydirs and '__manifest__.py' in listdir(join(addons_path, 'test_uninstall')):
+                continue
+            if 'project_status' in onlydirs and '__manifest__.py' in listdir(join(addons_path, 'project_status')):
+                continue
+            if 'web_favicon' in onlydirs and '__manifest__.py' in listdir(join(addons_path, 'web_favicon')):
+                continue
+
             non_basic_addons.extend(onlydirs)
         res = []
         states = ['to upgrade', 'to remove']
@@ -34,7 +41,10 @@ class Module(models.Model):
         x = self.search([['state', 'in', states],
         ['name', 'in', non_basic_addons]], order='obi_upgrades')
         print(x)
-        modules = sorted(x, key=attrgetter('obi_upgrades'), reverse=True)
+        if installed:
+            modules = sorted(x, key=attrgetter('obi_upgrades'), reverse=True)
+        else:
+            modules = sorted(x, key=attrgetter('name'))
 
 
         for module in modules:

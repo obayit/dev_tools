@@ -36,11 +36,11 @@ class Module(models.Model):
             states.append('installed')
         else:
             states.append('uninstalled')
-        print('#######3looking for modules with state in')
-        print(states)
+        # print('#######3looking for modules with state in')
+        # print(states)
         x = self.search([['state', 'in', states],
         ['name', 'in', non_basic_addons]], order='obi_upgrades')
-        print(x)
+        # print(x)
         if installed:
             modules = sorted(x, key=attrgetter('obi_upgrades'), reverse=True)
         else:
@@ -80,5 +80,5 @@ class Module(models.Model):
     def _button_immediate_function(self, function):
         if self.env.context.get('obi_upgrade', False):
             self.obi_upgrades += 1
-        super(Module, self)._button_immediate_function(function)
-        return  # do not reload page after upgrade, it is annoying
+        # print('###upgrading ')
+        return super(Module, self)._button_immediate_function(function)

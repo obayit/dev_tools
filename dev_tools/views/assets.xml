@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <template id="assets_backend" name="dev_tools assets" inherit_id="web.assets_backend">
+    <template id="assets_backend" name="dev_tools_assets" inherit_id="web.assets_backend">
         <xpath expr="." position="inside">
             <script type="text/javascript" src="/dev_tools/static/src/js/upgrade_tray_icon.js" />
             <script type="text/javascript" src="/dev_tools/static/src/js/install_tray_icon.js" />

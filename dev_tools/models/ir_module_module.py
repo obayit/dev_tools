@@ -14,7 +14,7 @@ class Module(models.Model):
     obi_upgrades = fields.Integer('Obi Upgrades Counter', help="Used to sort the list on the front end.")
 
     @api.model
-    def get_non_basic(self):
+    def get_non_basic(self, installed=True):
         non_basic_addons = []
         for addons_path in odoo.modules.module.ad_paths:
             onlydirs = [d for d in listdir(addons_path) if isdir(join(addons_path, d))]
@@ -22,11 +22,29 @@ class Module(models.Model):
                 continue
             if 'account_accountant' in onlydirs and '__manifest__.py' in listdir(join(addons_path, 'account_accountant')):
                 continue
-            non_basic_addons.extend(onlydirs)
+            if 'test_uninstall' in onlydirs and '__manifest__.py' in listdir(join(addons_path, 'test_uninstall')):
+                continue
+            if 'project_status' in onlydirs and '__manifest__.py' in listdir(join(addons_path, 'project_status')):
+                continue
+            if 'web_favicon' in onlydirs and '__manifest__.py' in listdir(join(addons_path, 'web_favicon')):
+                continue
+
+                non_basic_addons.extend(onlydirs)
         res = []
-        x = self.search([['state', 'in', ['installed', 'to upgrade', 'to remove']],
+        states = ['to upgrade', 'to remove']
+        if installed:
+            states.append('installed')
+        else:
+            states.append('uninstalled')
+        # print('#######3looking for modules with state in')
+        # print(states)
+        x = self.search([['state', 'in', states],
         ['name', 'in', non_basic_addons]], order='obi_upgrades')
-        modules = sorted(x, key=attrgetter('obi_upgrades'), reverse=True)
+        # print(x)
+        if installed:
+            modules = sorted(x, key=attrgetter('obi_upgrades'), reverse=True)
+        else:
+            modules = sorted(x, key=attrgetter('name'))
 
 
         for module in modules:
@@ -62,5 +80,4 @@ class Module(models.Model):
     def _button_immediate_function(self, function):
         if self.env.context.get('obi_upgrade', False):
             self.obi_upgrades += 1
-        super(Module, self)._button_immediate_function(function)
-        return  # do not reload page after upgrade, it is annoying
+        return super(Module, self)._button_immediate_function(function)

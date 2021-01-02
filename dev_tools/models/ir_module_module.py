@@ -29,7 +29,7 @@ class Module(models.Model):
             if 'web_favicon' in onlydirs and '__manifest__.py' in listdir(join(addons_path, 'web_favicon')):
                 continue
 
-            non_basic_addons.extend(onlydirs)
+                non_basic_addons.extend(onlydirs)
         res = []
         states = ['to upgrade', 'to remove']
         if installed:
@@ -80,5 +80,4 @@ class Module(models.Model):
     def _button_immediate_function(self, function):
         if self.env.context.get('obi_upgrade', False):
             self.obi_upgrades += 1
-        # print('###upgrading ')
         return super(Module, self)._button_immediate_function(function)

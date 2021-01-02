@@ -28,8 +28,8 @@ class Module(models.Model):
                 continue
             if 'web_favicon' in onlydirs and '__manifest__.py' in listdir(join(addons_path, 'web_favicon')):
                 continue
-
-                non_basic_addons.extend(onlydirs)
+            non_basic_addons.extend(onlydirs)
+            
         res = []
         states = ['to upgrade', 'to remove']
         if installed:
